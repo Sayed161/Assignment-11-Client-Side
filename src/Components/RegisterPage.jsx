@@ -1,18 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImage from "../assets/Images/Animation1.json";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Lottie from "lottie-react";
+import { AuthContext } from "../Providers/AuthProviders";
+import Swal from 'sweetalert2'
 
 const RegisterPage = () => {
+  const { createNewUser,setUser,setLoading }= useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+    const navigate = useNavigate();
+  // Register Form 
   const handleLogin = (data) => {
-    console.log("Register", data);
+  
+    createNewUser(data).then(result=> {
+      
+      const user = result.user;
+      setUser(user);
+      setLoading(false);
+      Swal.fire({
+        title: "Registration Successfull!",
+        icon: "success",
+        draggable: true
+      });
+      setTimeout(()=>{
+        navigate("/");
+        },2000);
+      
+    }
+      
+    )
+
   };
   return (
     <div>
@@ -43,8 +67,8 @@ const RegisterPage = () => {
                 </label>
                 <input
                   type="text"
-                  name="username"
-                  id="username"
+                  name="Name"
+                  id="Name"
                   placeholder="Name"
                   {...register("Name", { required: "Name is required" })}
                   className="w-full px-4 py-3 rounded-md bg-white text-gray-800 border border-gray-600"
@@ -132,13 +156,8 @@ const RegisterPage = () => {
               </Link>
             </p>
           </div>
-          
-          <DotLottieReact
-             src="https://lottie.host/be766252-ee13-4247-9b92-00bac9ecdd4e/hj40BcTPaN.lottie"
-            loop
-            autoplay
-            className="object-center min-h-fit mx-auto rounded-md col-span-3"
-          />
+          <img src="https://static.vecteezy.com/system/resources/previews/003/689/230/non_2x/online-registration-or-sign-up-login-for-account-on-smartphone-app-user-interface-with-secure-password-mobile-application-for-ui-web-banner-access-cartoon-people-illustration-vector.jpg" alt="" className="object-center min-h-full mx-auto rounded-md col-span-3"/>
+  
 
           {/* <img src={loginImage} alt="" className="object-cover w-full rounded-md xl:col-span-3 dark:bg-gray-500" /> */}
         </div>

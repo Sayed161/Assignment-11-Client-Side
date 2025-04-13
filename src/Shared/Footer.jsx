@@ -14,8 +14,8 @@ const Footer = () => {
 		</div>
 		<div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
 			<div className="space-y-3">
-				<h3 className="tracking-wide uppercase dark:text-gray-900">Product</h3>
-				<ul className="space-y-1">
+				<h3 className="tracking-wide uppercase volkhov-bold-italic">Product</h3>
+				<ul className="space-y-1 volkhov-regular">
 					<li>
 						<a rel="noopener noreferrer" href="#">Features</a>
 					</li>
@@ -31,8 +31,8 @@ const Footer = () => {
 				</ul>
 			</div>
 			<div className="space-y-3">
-				<h3 className="tracking-wide uppercase dark:text-gray-900">Company</h3>
-				<ul className="space-y-1">
+				<h3 className="tracking-wide uppercase volkhov-bold-italic">Company</h3>
+				<ul className="space-y-1 volkhov-regular">
 					<li>
 						<a rel="noopener noreferrer" href="#">Privacy</a>
 					</li>
@@ -42,8 +42,8 @@ const Footer = () => {
 				</ul>
 			</div>
 			<div className="space-y-3">
-				<h3 className="uppercase dark:text-gray-900">Developers</h3>
-				<ul className="space-y-1">
+				<h3 className="uppercase volkhov-bold-italic">Developers</h3>
+				<ul className="space-y-1 volkhov-regular">
 					<li>
 						<a rel="noopener noreferrer" href="#">Public API</a>
 					</li>
@@ -56,7 +56,7 @@ const Footer = () => {
 				</ul>
 			</div>
 			<div className="space-y-3">
-				<div className="uppercase dark:text-gray-900">Social media</div>
+				<div className="uppercase volkhov-bold-italic">Social media</div>
 				<div className="flex justify-start space-x-3">
 					<a rel="noopener noreferrer" href="#" title="Facebook" className="flex items-center p-1">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
@@ -77,7 +77,7 @@ const Footer = () => {
 			</div>
 		</div>
 	</div>
-	<div className="py-6 text-sm text-center dark:text-gray-600">© 2025 Company Co. All rights reserved.</div>
+	<div className="py-6 text-sm text-center volkhov-bold-italic text-gray-600">© 2025 Company Co. All rights reserved.</div>
 </footer>
   )
 }
