@@ -1,14 +1,55 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import image from '../assets/Images/shwarma.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SkeletonCard from './SkeletonCard';
-
+import Swal from 'sweetalert2'
+import { AuthContext } from '../Providers/AuthProviders';
 const MyFoods = () => {
   const [foods,setFoods]=useState([]);
+  const { Quser } = useContext(AuthContext);
+  const username = Quser.displayName;
+  const navigate = useNavigate();
+  console.log("Usernmae",username);
   const [loading,setLoading]=useState(true);
+  const handleDelete = (id)=>{
+    
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        fetch(`http://localhost:5000/foods/${id}`,
+          { method: "DELETE",
+           headers: {
+             "Content-Type": "application/json",
+           },
+          }
+           
+         )
+         .then(res=>res.json())
+         .then(data=>{
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        }
+      });
+              
+    })
+  }
       useEffect(()=>{
         setTimeout(() => {
-          fetch('https://jsonplaceholder.typicode.com/todos/')
+          fetch(`http://localhost:5000/foods?name=${username}`)
           .then(response => response.json())
           .then(json => {setFoods(json);
             setLoading(false)
@@ -32,14 +73,13 @@ const MyFoods = () => {
         foods.map((item,index)=>{
           return(
       <div className="flex space-x-6" item={item}>
-              <img alt="" className="w-full object-cover h-56 mb-4 bg-center rounded-sm " src={image} />
+              <img alt="" className="w-full object-cover h-56 mb-4 bg-center rounded-sm " src={item.image} />
               <div className="flex flex-col">
-                <h4 className="text-xl font-semibold">Leroy Jenkins</h4>
-                <p className="text-sm ">Web developer</p>
+                <h4 className="text-xl font-semibold">{item.name}</h4>
+                <p className="text-sm ">{item.status}</p>
                 <div className="flex flex-col lg:flex-row mt-2 space-x-2 space-y-2">
-                <p className="btn bg-blue-600 text-white">Requested</p>
-                <p className="btn bg-red-600 text-white">Delete</p>
-                <Link to='/details' className="btn bg-orange-600 text-white">Details</Link>
+                <p className="btn bg-red-600 text-white"  onClick={()=>handleDelete(item._id)}>Delete</p>
+                <Link to={`/update/${item._id}`} className="btn bg-orange-600 text-white">Update</Link>
                 </div>
               </div>
             </div>

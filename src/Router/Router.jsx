@@ -47,11 +47,11 @@ const router = createBrowserRouter([
           element:<Requested_foods/>
         },
         {
-          path:'details',
+          path:'details/:id',
           element:<PrivateRouter><Details></Details></PrivateRouter>
         },
         {
-          path:'update',
+          path:'update/:id',
           element:<PrivateRouter><UpdateFoods/></PrivateRouter>
         },
       ]

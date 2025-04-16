@@ -5,11 +5,11 @@ import SkeletonCard from './SkeletonCard';
 
 const Feature = () => {
   const [foods,setFoods]=useState([]);
-  const sorteData= foods.sort((a,b)=>b.id-a.id).slice(0,6);
+  const sorteData= foods.sort((a,b)=>b.quantity-a.quantity).slice(0,6);
   const [loading,setLoading]=useState(true);
   useEffect(()=>{
     setTimeout(() => {
-      fetch('https://jsonplaceholder.typicode.com/todos/')
+      fetch('http://localhost:5000/foods')
       .then(response => response.json())
       .then(json => {setFoods(json);
         setLoading(false)
