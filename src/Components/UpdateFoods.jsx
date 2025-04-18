@@ -20,13 +20,14 @@ const UpdateFoods = () => {
         const quantity = formData.get("quantity");
         const status = formData.get("status");
         const data = { name, location, image, expire, notes, status, quantity };
-        console.log("denger", data);
+        console.log("the updated data",data);
         fetch(`http://localhost:5000/foods/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
+          credentials:'include'
         })
           .then((res) => res.json())
           .then((result) => {
@@ -45,7 +46,6 @@ const UpdateFoods = () => {
     fetch(`http://localhost:5000/foods?id=${id}`)
     .then(res=>res.json())
     .then(data=>{
-      console.log(data[0]);
       setfood(data[0]);
     })},[id]);
   

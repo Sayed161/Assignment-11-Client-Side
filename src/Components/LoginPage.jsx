@@ -10,8 +10,7 @@ const LoginPage = () => {
   const { userLogin,GoogleLogin,setUser,setLoading } = useContext(AuthContext);
   const handleGoogleLogin = ()=>{
     GoogleLogin().then(
-    res=>{
-      const user = res.user;
+    res=>{const user = res.user;
       setUser(user);
       setLoading(false);
       Swal.fire({

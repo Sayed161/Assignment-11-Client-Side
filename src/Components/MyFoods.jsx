@@ -9,7 +9,7 @@ const MyFoods = () => {
   const { Quser } = useContext(AuthContext);
   const username = Quser.displayName;
   const navigate = useNavigate();
-  console.log("Usernmae",username);
+ 
   const [loading,setLoading]=useState(true);
   const handleDelete = (id)=>{
     
@@ -27,6 +27,7 @@ const MyFoods = () => {
            headers: {
              "Content-Type": "application/json",
            },
+          credentials:'include'
           }
            
          )

@@ -31,13 +31,14 @@ const Add_foods = () => {
     const quantity = formData.get("quantity");
     const status = "Available";
     const data = { name, location, image, expire, notes, status, quantity,User,custom };
-    console.log("denger", data);
+   
     fetch("http://localhost:5000/foods", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
+      credentials:'include'
     })
       .then((res) => res.json())
       .then((result) => {

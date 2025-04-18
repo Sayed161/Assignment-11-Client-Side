@@ -1,9 +1,10 @@
 import React from "react";
 import { FaFireAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 const FeaturesCard = ( {item} ) => {
-  console.log("Card",item);
-  const { name, location, image, expire, notes, status, quantity,User,custom }=item;
+
+  const { _id,name, location, image, expire, notes, status, quantity,User,custom }=item;
   return (
     <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
       <div className="flex space-x-4">
@@ -58,9 +59,9 @@ const FeaturesCard = ( {item} ) => {
           </button>
         </div>
         <div className="flex space-x-2 text-sm dark:text-gray-600">
-          <button type="button" className="flex items-center p-1 space-x-1.5">
-            <span className="btn btn-neutral">Details</span>
-          </button>
+        <button type="button" className="flex items-center p-1 space-x-1.5">
+			  <Link to={`/details/${_id}`} className="btn btn-neutral">Details</Link>
+			</button>
         </div>
       </div>
     </div>

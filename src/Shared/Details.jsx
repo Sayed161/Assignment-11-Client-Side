@@ -60,6 +60,7 @@ const Details = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
+        credentials:'include'
       })
       .then(res=>res.json())
       .then(data=>{
@@ -68,7 +69,8 @@ const Details = () => {
           headers:{
             "Content-Type":"application/json",
           },
-          body:JSON.stringify(UpdateData)
+          body:JSON.stringify(UpdateData),
+          credentials:'include'
 
         }).then(res=>res.json())
         .then(data=>{
@@ -95,7 +97,7 @@ const Details = () => {
   }, [id]);
   return (
     <>
-      <section className="text-gray-800 bg-[rgba(149,129,43,0.1)] bg-center">
+      <section className="text-gray-800 bg-[rgba(149,129,43,0.1)] bg-center ">
         <div
           id="popup-modal"
           tabindex="-1"
@@ -128,7 +130,7 @@ const Details = () => {
                 </svg>
                 <span class="sr-only">Close modal</span>
               </button>
-              <div class="pt-4 md:p-5">
+              <div class="pt-4 md:p-5 mx-3">
                 <img src={food?.image} alt="" />
                 <h3 class="mb-2 text-2xl font-bold">
                   {food?.name}
@@ -137,9 +139,14 @@ const Details = () => {
               <span className="mb-1 font-bold">Pickup Location : </span>
               <span> {food?.location}</span>
             </label>
+             
             <label className="my-3 text-lg">
               <span className="mb-1 font-bold">Expire Date/Time : </span>
               <span> {food?.expire}</span>
+            </label>
+            <label className="block text-xl">
+              <span className="mb-1 font-bold">Quantity : </span>
+              <span> {food?.quantity}</span>
             </label>
             <div className="flex items-start justify-start my-4">
               <div>
@@ -153,6 +160,7 @@ const Details = () => {
                     alt="avatar"
                     className="object-cover w-10 h-10 mr-3 rounded-full dark:bg-gray-500"
                   />
+                  
                   <span className="hover:underline dark:text-gray-600">
                     {food?.User?.displayName}
                   </span>
@@ -202,6 +210,10 @@ const Details = () => {
             <label className="block my-3 text-xl">
               <span className="mb-1 font-bold">Pickup Location : </span>
               <span> {food?.location}</span>
+            </label>
+            <label className="block text-xl">
+              <span className="mb-1 font-bold">Quantity : </span>
+              <span> {food?.quantity}</span>
             </label>
             <label className="btn my-3 text-lg btn-neutral">
               <span className="mb-1 font-bold">Expire Date/Time : </span>

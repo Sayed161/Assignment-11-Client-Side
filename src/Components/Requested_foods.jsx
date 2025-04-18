@@ -11,7 +11,9 @@ const Requested_foods = () => {
   const [loading,setLoading]=useState(true);
         useEffect(()=>{
           setTimeout(() => {
-            fetch(`http://localhost:5000/food/requested?name=${username}`)
+            fetch(`http://localhost:5000/food/requested?name=${username}`,{
+              credentials:'include'
+            })
             .then(response => response.json())
             .then(json => {setFoods(json);
               setLoading(false)
@@ -32,10 +34,10 @@ const Requested_foods = () => {
     loading?(
       Array(4).fill(0).map((item,idx)=><SkeletonCard key={idx}></SkeletonCard>)
      ):(
-      foods.map((item,index)=>{
+      foods?.map((item,index)=>{
         return(
     <div className="flex space-x-6 border border-gray-50" item={item}>
-            <img alt="" className="w-full lg:w-6/12 object-cover h-76 mb-4 bg-center rounded-sm " src={item?.food?.image} />
+            <img alt="" className="w-1/2 lg:w-6/12 object-cover h-52 lg:h-76 mb-4 bg-center rounded-sm " src={item?.food?.image} />
             <div className="flex flex-col">
               <h4 className="text-xl font-semibold">{item?.food?.User?.displayName}</h4>
               <p className="text-sm ">{item?.food?.location}</p>
