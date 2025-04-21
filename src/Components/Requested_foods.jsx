@@ -11,11 +11,19 @@ const Requested_foods = () => {
   const [loading,setLoading]=useState(true);
         useEffect(()=>{
           setTimeout(() => {
-            fetch(`http://localhost:5000/food/requested?name=${username}`,{
+            fetch(`https://hunger-hero-server.vercel.app/food/requested?name=${username}`,{
               credentials:'include'
             })
             .then(response => response.json())
-            .then(json => {setFoods(json);
+            .then(json => {
+              if(Array.isArray(json))
+              {
+                setFoods(json);
+              }
+              else{
+                console.log("Error array",json);
+                setFoods([]);
+              }
               setLoading(false)
             })
           }, 2000);

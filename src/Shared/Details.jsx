@@ -53,7 +53,7 @@ const Details = () => {
         navigate("/");
       }, 2000);
     }
-    fetch('http://localhost:5000/food/requested',
+    fetch('https://hunger-hero-server.vercel.app/food/requested',
       {
         method: "POST",
         headers: {
@@ -64,7 +64,7 @@ const Details = () => {
       })
       .then(res=>res.json())
       .then(data=>{
-        fetch(`http://localhost:5000/foods/${id}`,{
+        fetch(`https://hunger-hero-server.vercel.app/foods/${id}`,{
           method:"PATCH",
           headers:{
             "Content-Type":"application/json",
@@ -91,7 +91,7 @@ const Details = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/foods?id=${id}`)
+    fetch(`https://hunger-hero-server.vercel.app/foods?id=${id}`)
       .then((res) => res.json())
       .then((data) => setfood(data[0]));
   }, [id]);

@@ -2,6 +2,8 @@ import React from "react";
 import { FaFireAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import moment from 'moment';
+
 const FeaturesCard = ( {item} ) => {
 
   const { _id,name, location, image, expire, notes, status, quantity,User,custom }=item;
@@ -11,7 +13,7 @@ const FeaturesCard = ( {item} ) => {
         <img
           alt=""
           src={User.Userimage}
-          className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
+          className="object-cover w-12 h-12 rounded-full shadow"
         />
         <div className="flex flex-col space-y-1">
           <a
@@ -21,7 +23,7 @@ const FeaturesCard = ( {item} ) => {
           >
             {User.displayName}
           </a>
-          <span className="text-xs dark:text-gray-600">{custom}</span>
+          <span className="text-xs">{moment(custom).fromNow()}</span>
         </div>
       </div>
       <div>

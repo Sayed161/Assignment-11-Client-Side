@@ -5,7 +5,7 @@ const YouMayLike = () => {
       const [foods,setFoods]=useState([]);
       const sorteData= foods.sort((a,b)=>b.id-a.id).slice(0,4);
       useEffect(()=>{
-        fetch('http://localhost:5000/foods')
+        fetch('https://hunger-hero-server.vercel.app/foods')
           .then(response => response.json())
           .then(json => {setFoods(json); })
       },[])

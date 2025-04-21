@@ -22,7 +22,7 @@ const MyFoods = () => {
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
-        fetch(`http://localhost:5000/foods/${id}`,
+        fetch(`https://hunger-hero-server.vercel.app/foods/${id}`,
           { method: "DELETE",
            headers: {
              "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const MyFoods = () => {
   }
       useEffect(()=>{
         setTimeout(() => {
-          fetch(`http://localhost:5000/foods?name=${username}`)
+          fetch(`https://hunger-hero-server.vercel.app/foods?name=${username}`)
           .then(response => response.json())
           .then(json => {setFoods(json);
             setLoading(false)

@@ -32,7 +32,7 @@ const Add_foods = () => {
     const status = "Available";
     const data = { name, location, image, expire, notes, status, quantity,User,custom };
    
-    fetch("http://localhost:5000/foods", {
+    fetch("https://hunger-hero-server.vercel.app/foods", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

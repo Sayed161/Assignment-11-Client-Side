@@ -21,7 +21,7 @@ const UpdateFoods = () => {
         const status = formData.get("status");
         const data = { name, location, image, expire, notes, status, quantity };
         console.log("the updated data",data);
-        fetch(`http://localhost:5000/foods/${id}`, {
+        fetch(`https://hunger-hero-server.vercel.app/foods/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const UpdateFoods = () => {
   }
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/foods?id=${id}`)
+    fetch(`https://hunger-hero-server.vercel.app/foods?id=${id}`)
     .then(res=>res.json())
     .then(data=>{
       setfood(data[0]);

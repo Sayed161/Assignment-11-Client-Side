@@ -2,6 +2,7 @@ import React from 'react';
 import { FaFireAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5"
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const AvailableFoodsCards = ({card}) => {
 	const { _id,name, location, image, expire, notes, status, quantity,User,custom }=card;
@@ -21,7 +22,7 @@ const AvailableFoodsCards = ({card}) => {
 			>
 			  {User.displayName}
 			</a>
-			<span className="text-xs dark:text-gray-600">{custom}</span>
+			<span className="text-xs">{moment(custom).fromNow()}</span>
 		  </div>
 		</div>
 		<div>

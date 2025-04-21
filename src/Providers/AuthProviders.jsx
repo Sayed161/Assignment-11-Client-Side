@@ -71,12 +71,12 @@ const AuthProviders = ({ children }) => {
       
       if(currentUser?.email){
         const user = {email:currentUser?.email};
-        axios.post('http://localhost:5000/login',user,{withCredentials:true})
-      .then(res=>{console.log(res.data);})
+        axios.post('https://hunger-hero-server.vercel.app/login',user,{withCredentials:true})
+      .then(res=>{res.data})
       }
       else{
-        axios.post('http://localhost:5000/logout',{},{withCredentials:true})
-      .then(res=>{console.log(res.data);})
+        axios.post('https://hunger-hero-server.vercel.app/logout',{},{withCredentials:true})
+      .then(res=>{res.data})
       }
       setLoading(false);
 

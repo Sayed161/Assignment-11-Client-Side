@@ -33,9 +33,9 @@ const Hero = () => {
 				<a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded ">Learn More</a>
 			</div>
 		</div>
-		<div className="lg:w-1/2 xl:w-3/5">
+		<div className="w-full xl:w-3/5">
 			<div className="flex items-center justify-center p-4 md:p-8 lg:p-12">
-				<img src={image} alt="" className="h-full animate-slow-spin" />
+				<img src={image} alt="" className="w-3/4 lg:w-full h-full animate-slow-spin" />
 			</div>
 		</div>
 	</div>

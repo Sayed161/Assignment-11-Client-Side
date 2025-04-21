@@ -9,7 +9,7 @@ const Feature = () => {
   const [loading,setLoading]=useState(true);
   useEffect(()=>{
     setTimeout(() => {
-      fetch('http://localhost:5000/foods')
+      fetch('https://hunger-hero-server.vercel.app/foods')
       .then(response => response.json())
       .then(json => {setFoods(json);
         setLoading(false)
@@ -39,7 +39,7 @@ const Feature = () => {
       </div>
       </div>
     <div className='flex items-center justify-around'>
-    <Link to='/availble-foods' className="btn bg-orange-600 w-52 text-white py-8">Show More</Link>
+    <Link to='/availble-foods' className="btn bg-orange-600 w-1/2 lg:w-52 text-white py-8">Show More</Link>
     </div>
     </div>
   )

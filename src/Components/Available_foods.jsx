@@ -15,7 +15,8 @@ const Available_foods = () => {
     const sort = sorted? 'desc':'asc';
     setSort(!sorted);
     setTimeout(() => {  
-      fetch(`http://localhost:5000/foods?status=Available&sortby=${sort}`)
+      fetch(`https://hunger-hero-server.vercel.app/foods?status=Available&sortby=${sort}`,
+      )
         .then((response) => response.json())
         .then((json) => {
           setFoods(json);
@@ -26,7 +27,7 @@ const Available_foods = () => {
   }
   useEffect(() => {
     setTimeout(() => {
-      fetch("http://localhost:5000/foods?status=Available")
+      fetch("https://hunger-hero-server.vercel.app/foods?status=Available")
         .then((response) => response.json())
         .then((json) => {
           setFoods(json);

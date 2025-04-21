@@ -56,6 +56,10 @@ const router = createBrowserRouter([
         },
       ]
     },
+    {
+      path:"*",
+      element: <h1 className="text-5xl text-center font-extrabold">Not Found 404</h1>
+  },
   ]);
 
 export default router
